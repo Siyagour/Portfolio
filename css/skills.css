@@ -1,0 +1,178 @@
+/**
+ * Skills Section Styles — Compact Four-Card Layout
+ * 
+ * Objectives:
+ * - Minimize vertical height while keeping all skills readable, organized, and balanced.
+ * - Three equal-width cards in the first row; one full-width card spanning directly underneath.
+ * - Inline wrapping text separated by subtle middle dots ( · ) rather than stacked vertical lists.
+ * - Equal height across the first three cards via CSS Grid.
+ * - Understated technical panel aesthetic adhering to the #07080B dark theme.
+ */
+
+/* ==========================================================================
+   Section Layout & Header Clearance
+   ========================================================================== */
+#skills {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+  scroll-margin-top: calc(var(--nav-height) + var(--space-8));
+  background-color: var(--color-bg);
+}
+
+.skills-header {
+  margin-bottom: var(--space-6);
+}
+
+/* ==========================================================================
+   Four-Card Grid (3 Cards in Row 1, 1 Full-Width Card in Row 2)
+   ========================================================================== */
+.skills-index-wrapper {
+  width: 100%;
+}
+
+.skills-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  width: 100%;
+  align-items: stretch;
+}
+
+/* ==========================================================================
+   Individual Understated Technical Panel (Card)
+   ========================================================================== */
+.skills-card {
+  background-color: rgba(18, 21, 29, 0.45);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.skills-card:hover {
+  border-color: var(--border-medium);
+  background-color: rgba(22, 26, 36, 0.6);
+}
+
+/* Card Header (Modern Sans Heading) */
+.skills-card-header {
+  margin-bottom: var(--space-3);
+}
+
+.skills-card-title {
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: var(--leading-tight);
+}
+
+/* Inline Skills Body with Middle Dots */
+.skills-card-body {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin: 0;
+  margin-top: auto;
+}
+
+.skill-name {
+  display: inline;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.skill-name:hover {
+  color: var(--color-text-primary);
+}
+
+.skill-sep {
+  color: rgba(255, 255, 255, 0.22);
+  margin: 0 5px;
+  user-select: none;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   Card 04: Full-Width Explored Technologies Panel
+   ========================================================================== */
+.skills-card-explored {
+  grid-column: 1 / -1;
+  background-color: rgba(14, 16, 22, 0.35);
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+.skills-card-explored:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(18, 21, 29, 0.5);
+}
+
+.skills-exploration-caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-wide);
+  margin: 0;
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+/* Tablet: 2 columns, with Card 3 and Card 4 adapting cleanly */
+@media (max-width: 900px) {
+  .skills-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .skills-card:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Mobile: Single column vertical stack */
+@media (max-width: 640px) {
+  #skills {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-12);
+  }
+
+  .skills-cards-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .skills-card:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .skills-card {
+    padding: var(--space-4);
+  }
+
+  .skills-card-title {
+    font-size: var(--text-base);
+  }
+
+  .skills-card-body {
+    font-size: var(--text-xs);
+    line-height: 1.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-card,
+  .skill-name {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" fill="none" class="constellation-svg" aria-label="Siya Gour" role="img">
+  <title>Siya Gour</title>
+  <defs>
+    <!-- Subtle Star Glow Filter -->
+    <filter id="star-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <radialGradient id="nebula-halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- ======================================================================
+       Letterform Geometric Constellation Links (Hairline white & faint cyan)
+       ====================================================================== -->
+  <g class="constellation-lines" stroke="rgba(240, 242, 246, 0.45)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Letter S -->
+    <path d="M 46,24 L 22,24 L 14,44 L 46,58 L 38,82 L 14,82" />
+    <!-- S internal cross-star link -->
+    <line x1="22" y1="24" x2="46" y2="58" stroke="rgba(56, 189, 248, 0.25)" stroke-dasharray="2 3" />
+    <line x1="14" y1="44" x2="38" y2="82" stroke="rgba(56, 189, 248, 0.25)" stroke-dasharray="2 3" />
+
+    <!-- Letter I -->
+    <path d="M 68,24 L 88,24 M 78,24 L 78,82 M 68,82 L 88,82" />
+
+    <!-- Letter Y -->
+    <path d="M 110,24 L 126,54 L 142,24 M 126,54 L 126,82" />
+    <line x1="110" y1="24" x2="142" y2="24" stroke="rgba(56, 189, 248, 0.25)" stroke-dasharray="2 3" />
+
+    <!-- Letter A -->
+    <path d="M 162,82 L 180,24 L 198,82" />
+    <path d="M 168,62 L 192,62" />
+    <!-- Diagonal celestial link -->
+    <line x1="180" y1="24" x2="180" y2="62" stroke="rgba(56, 189, 248, 0.3)" />
+
+    <!-- Word Parting Celestial Guide -->
+    <circle cx="224" cy="53" r="1.5" fill="#38BDF8" />
+
+    <!-- Letter G -->
+    <path d="M 284,34 L 268,24 L 250,38 L 250,68 L 268,82 L 284,72 L 284,54 L 268,54" />
+    <line x1="250" y1="38" x2="284" y2="54" stroke="rgba(56, 189, 248, 0.25)" stroke-dasharray="2 3" />
+
+    <!-- Letter O -->
+    <path d="M 314,24 L 334,24 L 344,42 L 344,64 L 334,82 L 314,82 L 304,64 L 304,42 Z" />
+    <line x1="304" y1="42" x2="334" y2="24" stroke="rgba(56, 189, 248, 0.2)" stroke-dasharray="2 3" />
+    <line x1="304" y1="64" x2="334" y2="82" stroke="rgba(56, 189, 248, 0.2)" stroke-dasharray="2 3" />
+
+    <!-- Letter U -->
+    <path d="M 364,24 L 364,70 L 376,82 L 392,82 L 404,70 L 404,24" />
+    <line x1="364" y1="70" x2="404" y2="70" stroke="rgba(56, 189, 248, 0.25)" stroke-dasharray="2 3" />
+
+    <!-- Letter R -->
+    <path d="M 424,82 L 424,24 L 448,24 L 456,38 L 448,52 L 424,52" />
+    <path d="M 440,52 L 458,82" />
+    <line x1="424" y1="24" x2="448" y2="52" stroke="rgba(56, 189, 248, 0.25)" stroke-dasharray="2 3" />
+  </g>
+
+  <!-- ======================================================================
+       Major Star Nodes (Bright white core with subtle electric-blue auras)
+       ====================================================================== -->
+  <!-- Star Halos (Cyan Glow) -->
+  <g fill="#38BDF8" opacity="0.35" filter="url(#star-glow)">
+    <!-- S stars -->
+    <circle cx="46" cy="24" r="3.5" />
+    <circle cx="22" cy="24" r="3" />
+    <circle cx="14" cy="44" r="3" />
+    <circle cx="46" cy="58" r="3.5" />
+    <circle cx="38" cy="82" r="3" />
+    <circle cx="14" cy="82" r="3" />
+
+    <!-- I stars -->
+    <circle cx="78" cy="24" r="3.5" />
+    <circle cx="78" cy="53" r="2.5" />
+    <circle cx="78" cy="82" r="3.5" />
+
+    <!-- Y stars -->
+    <circle cx="110" cy="24" r="3" />
+    <circle cx="142" cy="24" r="3" />
+    <circle cx="126" cy="54" r="3.5" />
+    <circle cx="126" cy="82" r="3" />
+
+    <!-- A stars -->
+    <circle cx="180" cy="24" r="4" />
+    <circle cx="168" cy="62" r="3" />
+    <circle cx="192" cy="62" r="3" />
+    <circle cx="162" cy="82" r="3" />
+    <circle cx="198" cy="82" r="3" />
+
+    <!-- G stars -->
+    <circle cx="268" cy="24" r="3" />
+    <circle cx="284" cy="34" r="3" />
+    <circle cx="250" cy="38" r="3" />
+    <circle cx="250" cy="68" r="3" />
+    <circle cx="268" cy="82" r="3.5" />
+    <circle cx="284" cy="72" r="3" />
+    <circle cx="284" cy="54" r="3.5" />
+    <circle cx="268" cy="54" r="2.5" />
+
+    <!-- O stars -->
+    <circle cx="314" cy="24" r="3" />
+    <circle cx="334" cy="24" r="3" />
+    <circle cx="344" cy="42" r="3" />
+    <circle cx="344" cy="64" r="3" />
+    <circle cx="334" cy="82" r="3" />
+    <circle cx="314" cy="82" r="3" />
+    <circle cx="304" cy="64" r="3" />
+    <circle cx="304" cy="42" r="3" />
+
+    <!-- U stars -->
+    <circle cx="364" cy="24" r="3" />
+    <circle cx="404" cy="24" r="3" />
+    <circle cx="364" cy="70" r="3" />
+    <circle cx="404" cy="70" r="3" />
+    <circle cx="376" cy="82" r="3" />
+    <circle cx="392" cy="82" r="3" />
+
+    <!-- R stars -->
+    <circle cx="424" cy="24" r="3.5" />
+    <circle cx="448" cy="24" r="3" />
+    <circle cx="456" cy="38" r="3" />
+    <circle cx="448" cy="52" r="3" />
+    <circle cx="424" cy="52" r="3" />
+    <circle cx="424" cy="82" r="3.5" />
+    <circle cx="458" cy="82" r="3.5" />
+  </g>
+
+  <!-- Star Cores (Crisp Star-White) -->
+  <g fill="#FFFFFF">
+    <!-- S -->
+    <circle cx="46" cy="24" r="2" />
+    <circle cx="22" cy="24" r="1.5" />
+    <circle cx="14" cy="44" r="1.5" />
+    <circle cx="46" cy="58" r="2" />
+    <circle cx="38" cy="82" r="1.5" />
+    <circle cx="14" cy="82" r="1.5" />
+
+    <!-- I -->
+    <circle cx="78" cy="24" r="2" />
+    <circle cx="78" cy="53" r="1.5" />
+    <circle cx="78" cy="82" r="2" />
+
+    <!-- Y -->
+    <circle cx="110" cy="24" r="1.5" />
+    <circle cx="142" cy="24" r="1.5" />
+    <circle cx="126" cy="54" r="2" />
+    <circle cx="126" cy="82" r="1.5" />
+
+    <!-- A -->
+    <circle cx="180" cy="24" r="2.2" />
+    <circle cx="168" cy="62" r="1.5" />
+    <circle cx="192" cy="62" r="1.5" />
+    <circle cx="162" cy="82" r="1.5" />
+    <circle cx="198" cy="82" r="1.5" />
+
+    <!-- G -->
+    <circle cx="268" cy="24" r="1.5" />
+    <circle cx="284" cy="34" r="1.5" />
+    <circle cx="250" cy="38" r="1.5" />
+    <circle cx="250" cy="68" r="1.5" />
+    <circle cx="268" cy="82" r="2" />
+    <circle cx="284" cy="72" r="1.5" />
+    <circle cx="284" cy="54" r="2" />
+    <circle cx="268" cy="54" r="1.2" />
+
+    <!-- O -->
+    <circle cx="314" cy="24" r="1.5" />
+    <circle cx="334" cy="24" r="1.5" />
+    <circle cx="344" cy="42" r="1.5" />
+    <circle cx="344" cy="64" r="1.5" />
+    <circle cx="334" cy="82" r="1.5" />
+    <circle cx="314" cy="82" r="1.5" />
+    <circle cx="304" cy="64" r="1.5" />
+    <circle cx="304" cy="42" r="1.5" />
+
+    <!-- U -->
+    <circle cx="364" cy="24" r="1.5" />
+    <circle cx="404" cy="24" r="1.5" />
+    <circle cx="364" cy="70" r="1.5" />
+    <circle cx="404" cy="70" r="1.5" />
+    <circle cx="376" cy="82" r="1.5" />
+    <circle cx="392" cy="82" r="1.5" />
+
+    <!-- R -->
+    <circle cx="424" cy="24" r="2" />
+    <circle cx="448" cy="24" r="1.5" />
+    <circle cx="456" cy="38" r="1.5" />
+    <circle cx="448" cy="52" r="1.5" />
+    <circle cx="424" cy="52" r="1.5" />
+    <circle cx="424" cy="82" r="2" />
+    <circle cx="458" cy="82" r="2" />
+  </g>
+
+  <!-- Delicate micro-stars scattered subtly nearby -->
+  <g fill="#FFFFFF" opacity="0.35">
+    <circle cx="98" cy="18" r="0.8" />
+    <circle cx="218" cy="78" r="0.8" />
+    <circle cx="294" cy="14" r="0.8" />
+    <circle cx="482" cy="32" r="1" />
+    <circle cx="496" cy="68" r="0.8" />
+  </g>
+</svg>
+

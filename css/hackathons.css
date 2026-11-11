@@ -1,0 +1,284 @@
+/**
+ * Hackathons Section Styles — Expandable Mission Log Entries
+ * Accessible <details> / <summary> disclosure pattern with smooth chevron toggle.
+ */
+
+/* ==========================================================================
+   Mission Log Container & Layout
+   ========================================================================== */
+.missions-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+.mission-log-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+/* Individual Collapsible Details Card */
+.mission-log-entry {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast),
+              background-color var(--transition-fast);
+  overflow: hidden;
+}
+
+.mission-log-entry:hover {
+  border-color: var(--border-medium);
+}
+
+.mission-log-entry[open] {
+  border-color: var(--border-medium);
+  background-color: var(--color-bg-card);
+}
+
+/* ==========================================================================
+   Summary Bar (Collapsed State)
+   ========================================================================== */
+.mission-log-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-6);
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  gap: var(--space-4);
+  transition: background-color var(--transition-fast);
+}
+
+.mission-log-summary::-webkit-details-marker {
+  display: none;
+}
+
+.mission-log-summary:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.mission-log-summary:focus-visible {
+  outline: 2px solid var(--color-accent-bright);
+  outline-offset: -2px;
+}
+
+/* Summary Left: Code & Titles */
+.summary-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.mission-code-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wider);
+}
+
+.summary-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mission-event-title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+
+.mission-project-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+/* Summary Right: Result Badge & Chevron */
+.summary-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.mission-outcome-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  letter-spacing: var(--tracking-wide);
+}
+
+.chevron-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.mission-log-summary:hover .chevron-wrap {
+  color: var(--color-text-primary);
+}
+
+/* Invert Chevron on Open */
+.mission-log-entry[open] .chevron-wrap {
+  transform: rotate(180deg);
+  color: var(--color-accent-bright);
+}
+
+/* ==========================================================================
+   Expanded Content Body
+   ========================================================================== */
+.mission-expanded-content {
+  padding: var(--space-4) var(--space-6) var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.mission-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+}
+
+.mission-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.meta-value {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.mission-tagline {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Contributions Section */
+.mission-contributions-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contributions-heading {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.contributions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contribution-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+}
+
+.contribution-bullet {
+  color: var(--color-accent-bright);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* Demo Link */
+.mission-actions-row {
+  display: flex;
+  align-items: center;
+  padding-top: var(--space-2);
+}
+
+.mission-demo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-primary);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  padding: 6px 14px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.mission-demo-link:hover {
+  background-color: rgba(37, 99, 235, 0.15);
+  border-color: var(--color-accent-bright);
+  color: var(--color-accent-bright);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 640px) {
+  .mission-log-summary {
+    padding: var(--space-3) var(--space-4);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .summary-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .mission-expanded-content {
+    padding: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron-wrap {
+    transition: none;
+  }
+}

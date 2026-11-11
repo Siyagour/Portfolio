@@ -1,0 +1,742 @@
+/**
+ * Projects Section Styles — Circular Lunar Orbit & Developer Workstation Modal
+ * 
+ * Architecture:
+ * 1. Circular Lunar Orbit Selector: 8 phases arranged symmetrically in a circle clockwise (12:00 New Moon to 10:30 Waning Crescent).
+ * 2. Developer Workstation Modal (VS Code aesthetic, window titlebar, tabs, sidebar explorer, editor pane, status bar).
+ * 3. Initial state: Clean section with orbit only; clicking available phase opens workstation modal.
+ */
+
+/* ==========================================================================
+   Projects Section Container
+   ========================================================================== */
+#projects {
+  position: relative;
+  overflow: hidden;
+}
+
+.projects-orbit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-8) 0;
+  position: relative;
+}
+
+/* ==========================================================================
+   Circular Lunar Orbit Track
+   ========================================================================== */
+.orbit-stage {
+  --orbit-radius: clamp(140px, 20vw, 230px);
+  --node-size: clamp(74px, 10vw, 104px);
+
+  position: relative;
+  width: calc(var(--orbit-radius) * 2 + var(--node-size) + 40px);
+  height: calc(var(--orbit-radius) * 2 + var(--node-size) + 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+/* Concentric Hairline Orbit Rings */
+.orbit-ring-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(var(--orbit-radius) * 2);
+  height: calc(var(--orbit-radius) * 2);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.orbit-path-line {
+  stroke: var(--border-subtle);
+  stroke-width: 1.2px;
+  stroke-dasharray: 4 4;
+}
+
+.orbit-inner-guide {
+  stroke: rgba(255, 255, 255, 0.03);
+  stroke-width: 1px;
+}
+
+/* Orbit Center Telemetry Hub */
+.orbit-center-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(130px, 18vw, 190px);
+  height: clamp(130px, 18vw, 190px);
+  border-radius: var(--radius-full);
+  background-color: rgba(14, 16, 21, 0.85);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-3);
+  z-index: 2;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  user-select: none;
+  pointer-events: none;
+}
+
+.hub-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-1);
+}
+
+.hub-title {
+  font-family: var(--font-sans);
+  font-size: clamp(var(--text-xs), 1.6vw, var(--text-sm));
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+  margin: 0 0 var(--space-1);
+}
+
+.hub-hint {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-accent-bright);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Lunar Orbit Nodes (Polar Positioning around Circle)
+   ========================================================================== */
+.lunar-phase-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--node-size);
+  height: var(--node-size);
+  margin-top: calc(-0.5 * var(--node-size));
+  margin-left: calc(-0.5 * var(--node-size));
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: var(--space-2);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+
+  /* Polar positioning formula: Rotates by angle, travels outward by radius, rotates back to stay upright */
+  transform: rotate(calc(var(--phase-angle) * 1deg)) 
+             translateY(calc(-1 * var(--orbit-radius))) 
+             rotate(calc(var(--phase-angle) * -1deg));
+}
+
+/* Available Interactive Phases (1-4) */
+.lunar-phase-node.is-available {
+  cursor: pointer;
+}
+
+.lunar-phase-node.is-available:hover {
+  border-color: var(--border-medium);
+  background-color: var(--color-bg-card);
+  transform: rotate(calc(var(--phase-angle) * 1deg)) 
+             translateY(calc(-1 * var(--orbit-radius) - 3px)) 
+             rotate(calc(var(--phase-angle) * -1deg));
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7);
+}
+
+.lunar-phase-node.is-available:focus-visible {
+  outline: 2px solid var(--color-accent-bright);
+  outline-offset: 2px;
+}
+
+/* Active Selected Indicator */
+.lunar-phase-node.is-selected {
+  border-color: var(--color-accent-bright);
+  box-shadow: 0 0 16px var(--color-accent-glow);
+}
+
+/* Locked Future Phases (5-8) */
+.lunar-phase-node.is-locked {
+  opacity: 0.38;
+  cursor: not-allowed;
+  border-style: dashed;
+  background-color: rgba(255, 255, 255, 0.015);
+}
+
+.lunar-phase-node.is-locked:hover {
+  transform: rotate(calc(var(--phase-angle) * 1deg)) 
+             translateY(calc(-1 * var(--orbit-radius))) 
+             rotate(calc(var(--phase-angle) * -1deg));
+}
+
+/* Node Internal Elements */
+.node-glyph-wrap {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.lunar-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.node-order {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-text-muted);
+  line-height: 1;
+}
+
+.node-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+.node-status-tag {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  text-transform: uppercase;
+  color: var(--color-status-in-progress);
+  letter-spacing: 0.05em;
+  margin-top: 1px;
+}
+
+/* ==========================================================================
+   Developer Workstation Modal / Popup
+   ========================================================================== */
+.project-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(7, 8, 11, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(var(--space-4), 3vw, var(--space-8));
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.project-modal-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Modal Inner Container */
+.modal-dialog-container {
+  width: 100%;
+  max-width: 1060px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  transform: scale(0.97) translateY(8px);
+  transition: transform var(--transition-normal);
+}
+
+.project-modal-backdrop.is-open .modal-dialog-container {
+  transform: scale(1) translateY(0);
+}
+
+/* Workstation Monitor Frame (VS Code Aesthetic) */
+.workstation-monitor {
+  background-color: #0B0E14;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 1px rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 88vh;
+}
+
+/* Titlebar & Tabs */
+.workstation-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #10141D;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0 var(--space-4);
+  height: 42px;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.control-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+}
+
+.control-dot.close { background-color: #EF4444; opacity: 0.8; }
+.control-dot.min { background-color: #F59E0B; opacity: 0.8; }
+.control-dot.max { background-color: #10B981; opacity: 0.8; }
+
+.editor-tabs-bar {
+  display: flex;
+  align-items: center;
+}
+
+.editor-tab {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  height: 42px;
+  background-color: #0B0E14;
+  border-right: 1px solid var(--border-subtle);
+  border-top: 2px solid var(--color-accent-bright);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-primary);
+}
+
+.tab-icon {
+  font-size: 11px;
+}
+
+/* Modal Close Action Button */
+.workstation-close-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.workstation-close-btn:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ffffff;
+}
+
+.workstation-close-btn:focus-visible {
+  outline: 2px solid var(--color-accent-bright);
+}
+
+.workstation-close-btn kbd {
+  font-size: 9px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+/* Workstation Screen Interior (Sidebar + Main Editor) */
+.workstation-screen {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  flex: 1;
+  overflow: hidden;
+  background-color: #0B0E14;
+}
+
+/* Sidebar Explorer Panel */
+.workstation-sidebar {
+  background-color: #0E121A;
+  border-right: 1px solid var(--border-subtle);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  overflow-y: auto;
+}
+
+.sidebar-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.sidebar-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+
+.tree-item.is-active-file {
+  color: var(--color-accent-bright);
+}
+
+.sidebar-phase-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.sidebar-nav-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.sidebar-phase-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  border-radius: var(--radius-xs);
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  text-align: left;
+}
+
+.sidebar-phase-btn:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--color-text-primary);
+}
+
+.sidebar-phase-btn.is-active {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: var(--color-accent-bright);
+}
+
+/* Main Editor Content Area */
+.workstation-editor {
+  padding: clamp(var(--space-4), 3vw, var(--space-8));
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Editor Header: Breadcrumbs & Project Title */
+.editor-breadcrumbs {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.editor-breadcrumbs span {
+  color: var(--color-text-secondary);
+}
+
+.editor-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-4);
+}
+
+.editor-project-title {
+  font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.editor-status-tag {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-text-muted);
+}
+
+.editor-status-tag.in-progress {
+  color: var(--color-status-in-progress);
+  background-color: var(--color-status-in-progress-bg);
+  border-color: var(--color-status-in-progress-border);
+}
+
+.editor-tagline {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.editor-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+/* Editor Section Panels */
+.editor-panels-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.editor-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.panel-header {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Roles */
+.role-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.role-pill {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  background-color: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: var(--color-accent-bright);
+}
+
+/* Key Contributions List */
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.highlight-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+}
+
+.highlight-bullet {
+  color: var(--color-accent-bright);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* Stack Pills */
+.tech-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.tech-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-text-secondary);
+}
+
+.empty-stack-note {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.achievement-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+  margin: 0;
+}
+
+/* Action Links */
+.links-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.project-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-primary);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.project-link-btn:hover {
+  background-color: rgba(56, 189, 248, 0.1);
+  border-color: var(--color-accent-bright);
+  color: var(--color-accent-bright);
+}
+
+/* Workstation Statusbar */
+.workstation-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0A0D12;
+  border-top: 1px solid var(--border-subtle);
+  padding: 0 var(--space-4);
+  height: 26px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.statusbar-left,
+.statusbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.status-verified {
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 900px) {
+  .workstation-screen {
+    grid-template-columns: 1fr;
+  }
+
+  .workstation-sidebar {
+    display: none;
+  }
+
+  .editor-panels-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 640px) {
+  .orbit-stage {
+    --orbit-radius: clamp(115px, 34vw, 150px);
+    --node-size: clamp(62px, 16vw, 76px);
+  }
+
+  .node-label {
+    max-width: 65px;
+    font-size: 9px;
+  }
+
+  .hub-title {
+    font-size: 11px;
+  }
+
+  .hub-hint {
+    font-size: 8px;
+  }
+
+  .modal-dialog-container {
+    max-height: 94vh;
+  }
+
+  .workstation-monitor {
+    max-height: 94vh;
+  }
+
+  .workstation-editor {
+    padding: var(--space-4);
+  }
+
+  .statusbar-right {
+    display: none;
+  }
+}

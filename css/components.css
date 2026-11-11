@@ -1,0 +1,185 @@
+/**
+ * Components — Transparent Navbar & Navigation
+ * Visual constraints:
+ * - Void-black integration (#07080B)
+ * - Zero heavy glassmorphism, no purple/violet accents, no generic cards
+ * - Hairline borders and subtle electric-blue indicators
+ */
+
+/* ==========================================================================
+   Global Transparent Navigation Bar
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-bottom: 1px solid transparent;
+  z-index: 100;
+  transition: background-color var(--transition-normal),
+              border-color var(--transition-normal);
+}
+
+/* Subtle void-black integration on scroll — no milky glassmorphism */
+.site-header.scrolled {
+  background-color: rgba(7, 8, 11, 0.92);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Desktop Navigation Menu */
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav-link {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+  position: relative;
+  padding: var(--space-2) 0;
+}
+
+.nav-link:hover {
+  color: var(--color-text-primary);
+}
+
+/* Subtle Active Section Indicator */
+.nav-link.active {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--color-accent-bright);
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.mobile-toggle:hover {
+  border-color: var(--border-medium);
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 18px;
+}
+
+.hamburger-line {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-text-primary);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* Accessible Mobile Toggle Transformation */
+.mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Mobile Navigation Menu Drawer
+   ========================================================================== */
+@media (max-width: 820px) {
+  .nav-container {
+    justify-content: flex-end;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-6) var(--wrap-padding) var(--space-8);
+    background-color: #07080B;
+    border-bottom: 1px solid var(--border-subtle);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform var(--transition-normal),
+                opacity var(--transition-normal),
+                visibility var(--transition-normal);
+  }
+
+  .nav-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: var(--space-4);
+  }
+
+  .nav-link {
+    font-size: var(--text-md);
+    display: block;
+    width: 100%;
+    padding: var(--space-2) 0;
+  }
+
+  .nav-link.active::after {
+    left: 0;
+    width: 24px;
+    right: auto;
+  }
+
+  .mobile-toggle {
+    display: inline-flex;
+  }
+}

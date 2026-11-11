@@ -1,0 +1,285 @@
+/**
+ * Contact Section Styles — Photorealistic Lunar Hemisphere & Enhanced Visibility Flags
+ * 
+ * Strict Guidelines:
+ * - The Moon is a broad, photorealistic celestial hemisphere emerging from the bottom edge.
+ * - Sized to approximately 85-95% viewport width on desktop.
+ * - Natural spherical proportions preserved (2000 / 700 aspect ratio).
+ * - Exactly four physical flags planted into lunar terrain (LinkedIn, GitHub, Email, Resume).
+ * - Flags feature lighter charcoal fabric, subtle silver-grey borders, and sharp high-contrast symbols.
+ * - LinkedIn symbol accented with restrained electric blue; others in soft white.
+ * - Zero text labels, zero captions, zero tooltips.
+ * - Email is active (mailto:siyagour23@gmail.com). Others are visible but non-interactive.
+ * - Flags scale and preserve their physical landing coordinates in 100% lockstep across all devices.
+ */
+
+/* ==========================================================================
+   Section Container & Scroll Clearance
+   ========================================================================== */
+#contact {
+  position: relative;
+  overflow: hidden;
+  padding-top: var(--space-20);
+  padding-bottom: 0;
+  scroll-margin-top: calc(var(--nav-height) + var(--space-8));
+  background-color: var(--color-bg);
+}
+
+.contact-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  gap: var(--space-4);
+  padding: 0 var(--space-4);
+}
+
+.contact-layout .section-header {
+  margin-bottom: 0;
+  max-width: 720px;
+}
+
+.contact-headline {
+  font-size: clamp(var(--text-xl), 3.2vw, var(--text-3xl));
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+  margin-top: var(--space-2);
+}
+
+/* ==========================================================================
+   Lunar Hemisphere Stage (85-95% Viewport Width, Stable Aspect Ratio)
+   ========================================================================== */
+.contact-lunar-stage {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  line-height: 0;
+  overflow: hidden;
+  margin-top: var(--space-8);
+}
+
+.lunar-media-wrap {
+  position: relative;
+  width: min(92vw, 1400px);
+  aspect-ratio: 2000 / 700;
+  margin: 0 auto;
+  line-height: 0;
+  user-select: none;
+}
+
+.lunar-hemisphere-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  /* Top rim is a crisp vacuum edge; lower edges dissolve into void black */
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+}
+
+/* ==========================================================================
+   Planted Flags Overlay & Terrain Perspective
+   ========================================================================== */
+.lunar-flags-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.lunar-flag {
+  position: absolute;
+  width: 54px;
+  height: 70px;
+  /* Anchor point is the ground contact base of the flagpole (x=7px, y=66px in SVG) */
+  transform-origin: 7px 66px;
+  transform: translate(-7px, -66px) rotate(var(--flag-tilt, 0deg));
+  pointer-events: auto;
+  z-index: 20;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  transition: transform var(--transition-fast), filter var(--transition-fast), opacity var(--transition-fast);
+}
+
+.lunar-flag.is-active {
+  cursor: pointer;
+}
+
+.lunar-flag.is-disabled {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.lunar-flag-visual {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.85));
+  transition: filter var(--transition-fast), transform var(--transition-fast);
+}
+
+.lunar-flag-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.lunar-flag-svg * {
+  pointer-events: none;
+}
+
+.flag-cloth {
+  transition: stroke var(--transition-fast), fill var(--transition-fast), filter var(--transition-fast);
+}
+
+.flag-symbol {
+  color: #FFFFFF;
+  opacity: 0.92;
+  transition: color var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.flag-symbol-linkedin {
+  color: var(--color-accent-bright);
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   Hover & Focus Interactions (Direct Anchor Hover, Subtle Lunar Glow)
+   ========================================================================== */
+.lunar-flag.is-active:hover {
+  transform: translate(-7px, -70px) rotate(var(--flag-tilt, 0deg));
+}
+
+/* Glow applied through visual wrapper */
+.lunar-flag.is-active:hover .lunar-flag-visual {
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.9))
+          drop-shadow(0 0 6px rgba(226, 232, 240, 0.35));
+}
+
+/* LinkedIn gets a restrained electric-blue glow; GitHub and Email soft silver */
+.lunar-flag.is-active[data-platform="linkedin"]:hover .lunar-flag-visual {
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.9))
+          drop-shadow(0 0 6px rgba(56, 189, 248, 0.4));
+}
+
+/* Brighten fabric & border on hover */
+.lunar-flag.is-active:hover .flag-cloth {
+  stroke: #E2E8F0;
+  filter: brightness(1.22);
+}
+
+.lunar-flag.is-active[data-platform="linkedin"]:hover .flag-cloth {
+  stroke: var(--color-accent-bright);
+}
+
+/* Increase symbol visibility & crispness on hover */
+.lunar-flag.is-active:hover .flag-symbol {
+  opacity: 1;
+  color: #FFFFFF;
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.45));
+}
+
+.lunar-flag.is-active[data-platform="linkedin"]:hover .flag-symbol {
+  color: var(--color-accent-bright);
+  filter: drop-shadow(0 0 3px rgba(56, 189, 248, 0.5));
+}
+
+.lunar-flag.is-active:active {
+  transform: translate(-7px, -66px) rotate(var(--flag-tilt, 0deg)) scale(0.96);
+}
+
+.lunar-flag.is-active:focus-visible {
+  outline: 2px solid var(--color-accent-bright);
+  outline-offset: 4px;
+  border-radius: var(--radius-xs);
+}
+
+.lunar-flag.is-active:focus-visible .lunar-flag-visual {
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.9))
+          drop-shadow(0 0 6px rgba(56, 189, 248, 0.4));
+}
+
+/* Unconfigured Flags (Resume) — Present & Distinct */
+.lunar-flag.is-disabled {
+  opacity: 0.9;
+}
+
+.lunar-flag.is-disabled:hover {
+  opacity: 1;
+}
+
+.lunar-flag.is-disabled:hover .lunar-flag-svg {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 4px rgba(226, 232, 240, 0.3));
+}
+
+.lunar-flag.is-disabled:hover .flag-cloth {
+  stroke: #E2E8F0;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 900px) {
+  #contact {
+    padding-top: var(--space-16);
+    scroll-margin-top: calc(var(--nav-height) + var(--space-6));
+  }
+
+  .lunar-media-wrap {
+    width: 94vw;
+  }
+
+  .lunar-flag {
+    transform: scale(0.92) translate(-7px, -66px) rotate(var(--flag-tilt, 0deg));
+  }
+
+  .lunar-flag.is-active:hover {
+    transform: scale(0.92) translate(-7px, -70px) rotate(var(--flag-tilt, 0deg));
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-lunar-stage {
+    margin-top: var(--space-6);
+  }
+
+  .lunar-media-wrap {
+    width: 96vw;
+  }
+
+  .lunar-flag {
+    transform: scale(0.85) translate(-7px, -66px) rotate(var(--flag-tilt, 0deg));
+  }
+
+  .lunar-flag.is-active:hover {
+    transform: scale(0.85) translate(-7px, -70px) rotate(var(--flag-tilt, 0deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lunar-flag,
+  .lunar-flag:hover,
+  .flag-cloth,
+  .flag-symbol {
+    transition: none !important;
+    transform: translate(-7px, -66px) !important;
+  }
+}

@@ -1,0 +1,142 @@
+/**
+ * Hero Section Styles
+ * Typography-led composition, balanced negative space, responsive scaling, and zero slop.
+ */
+
+/* ==========================================================================
+   Hero Composition & Layout
+   ========================================================================== */
+.hero-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-composition {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 860px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   Hero Typography Hierarchy
+   - Siya Gour constellation lettering is the dominant visual anchor
+   - Clear distinction between name, descriptor, and statement
+   ========================================================================== */
+.hero-name-slot {
+  width: 100%;
+  margin-bottom: var(--space-4);
+}
+
+.hero-name {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.constellation-svg {
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.hero-descriptor {
+  font-family: var(--font-mono);
+  font-size: clamp(var(--text-sm), 1.6vw, var(--text-md));
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  letter-spacing: var(--tracking-wide);
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-6);
+}
+
+.hero-intro {
+  font-size: clamp(var(--text-base), 1.25vw, var(--text-md));
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  max-width: 680px;
+  margin-bottom: var(--space-8);
+}
+
+/* ==========================================================================
+   Hero Action Buttons
+   ========================================================================== */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.75rem 1.4rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border-radius: var(--radius-xs);
+  transition: background-color var(--transition-fast),
+              color var(--transition-fast),
+              border-color var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: 1px solid var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-text-secondary);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 768px) {
+  .hero-composition {
+    max-width: 100%;
+  }
+
+  .constellation-svg {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

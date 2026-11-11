@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Portfolio of Siya Gour — Computer Science Student & Aspiring Technical Product Manager. User-focused product thinking, AI/ML, and practical engineering.">
+  <meta name="theme-color" content="#07080B">
+
+  <title>Siya Gour — Computer Science Student & Aspiring Technical Product Manager</title>
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/skills.css">
+  <link rel="stylesheet" href="css/hackathons.css">
+  <link rel="stylesheet" href="css/contact.css">
+</head>
+
+<body>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Global Transparent Header & Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="wrap nav-container">
+      <!-- Desktop & Mobile Navigation Links -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#hackathons" class="nav-link">Hackathons</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Accessible Mobile Menu Toggle -->
+      <button type="button" class="mobile-toggle" id="mobile-toggle" aria-controls="nav-menu" aria-expanded="false"
+        aria-label="Toggle navigation menu">
+        <span class="hamburger-icon" aria-hidden="true">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Semantic Main Content Landmark -->
+  <main id="main-content">
+    <!-- Section 1: Home (Hero) Container -->
+    <section id="home" class="section section-home" aria-label="Home">
+      <div class="wrap hero-wrap">
+        <div class="hero-composition">
+          <div class="hero-name-slot" id="hero-name-slot">
+            <h1 class="hero-name">
+              <span class="visually-hidden">Siya Gour</span>
+              <img src="assets/vectors/constellation.svg" alt="" aria-hidden="true" class="constellation-svg"
+                width="540" height="104">
+            </h1>
+          </div>
+
+          <p class="hero-descriptor">Computer Science Student | Aspiring Technical Product Manager</p>
+
+          <p class="hero-intro">
+            I'm a computer science student interested in technology, thoughtful products and solving real-world
+            problems. I enjoy exploring ideas, understanding user needs and collaborating to turn concepts into
+            practical solutions.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">Explore Projects ↓</a>
+            <a href="#contact" class="btn btn-secondary">Contact</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: About Container -->
+    <section id="about" class="section section-about" aria-label="About">
+      <div class="wrap">
+        <div class="about-grid">
+          <!-- Left Column (40%): Heading & Expressive Subheading -->
+          <div class="about-col-left">
+            <h2 class="about-title">Who is she?</h2>
+            <p class="about-subheading">
+              A curious mind,<br class="br-desktop">
+              exploring the possibilities<br class="br-desktop">
+              of technology.
+            </p>
+          </div>
+
+          <!-- Right Column (60%): Vertical Divider & Body Paragraphs -->
+          <div class="about-col-right">
+            <div class="about-body">
+              <p>I'm a computer science student interested in how technology can solve real-world problems and make a
+                meaningful difference in people's lives.</p>
+              <p>I enjoy exploring ideas, understanding people and thinking about how those ideas can become useful
+                products.</p>
+              <p>Currently exploring AI/ML, product thinking and the intersection of technology and human experience.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Understated Editorial Footer Detail -->
+        <div class="about-footer">
+          <p class="about-focus-line">
+            <span>AI / ML</span>
+            <span class="about-sep" aria-hidden="true">·</span>
+            <span>PRODUCT THINKING</span>
+            <span class="about-sep" aria-hidden="true">·</span>
+            <span>HUMAN EXPERIENCE</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Projects Container -->
+    <section id="projects" class="section" aria-label="Projects">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="section-eyebrow">Lunar Orbit</span>
+          <h2 class="section-title">Projects</h2>
+          <p class="section-subtitle">
+            Eight astronomical phases tracing project evolution from inception to future milestones.
+          </p>
+        </div>
+
+        <!-- Circular Lunar Orbit Selector -->
+        <div class="projects-orbit-container" role="region" aria-label="Circular Lunar Phase Project Selector">
+          <div class="orbit-stage">
+            <!-- Concentric Hairline Orbit Rings SVG -->
+            <svg class="orbit-ring-svg" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+              <circle cx="250" cy="250" r="230" class="orbit-path-line" />
+              <circle cx="250" cy="250" r="160" class="orbit-inner-guide" />
+            </svg>
+
+            <!-- Center Hub -->
+            <div class="orbit-center-hub" aria-hidden="true">
+              <span class="hub-title">Phase Orbit</span>
+              <span class="hub-hint">Select a Phase</span>
+            </div>
+
+            <!-- Phase 1: New Moon (FinWise) - 0° / 12:00 -->
+            <button type="button" class="lunar-phase-node is-available" style="--phase-angle: 0;" data-phase-order="1"
+              data-project-id="finwise" aria-label="Phase 1: New Moon — FinWise (Click to open workstation)">
+              <div class="node-glyph-wrap" aria-hidden="true">
+                <svg class="lunar-svg" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="11" fill="#0D111A" stroke="rgba(255, 255, 255, 0.16)" stroke-width="0.8" />
+                  <circle cx="14" cy="14" r="10.5" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="0.8"
+                    stroke-dasharray="2 3" />
+                </svg>
+              </div>
+              <span class="node-order">01</span>
+              <span class="node-label">FinWise</span>
+            </button>
+
+            <!-- Phase 2: Waxing Crescent (SatQuery AI) - 45° / ~1:30 -->
+            <button type="button" class="lunar-phase-node is-available" style="--phase-angle: 45;" data-phase-order="2"
+              data-project-id="satquery-ai"
+              aria-label="Phase 2: Waxing Crescent — SatQuery AI (Click to open workstation)">
+              <div class="node-glyph-wrap" aria-hidden="true">
+                <svg class="lunar-svg" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="11" fill="#0D111A" stroke="rgba(255, 255, 255, 0.16)" stroke-width="0.8" />
+                  <path d="M 14,3 A 11,11 0 0 1 14,25 A 7.8,11 0 0 0 14,3 Z" fill="#E2E8F0" />
+                </svg>
+              </div>
+              <span class="node-order">02</span>
+              <span class="node-label">SatQuery AI</span>
+            </button>
+
+            <!-- Phase 3: First Quarter (Bachat Saathi) - 90° / 3:00 -->
+            <button type="button" class="lunar-phase-node is-available" style="--phase-angle: 90;" data-phase-order="3"
+              data-project-id="bachat-saathi"
+              aria-label="Phase 3: First Quarter — Bachat Saathi (Click to open workstation)">
+              <div class="node-glyph-wrap" aria-hidden="true">
+                <svg class="lunar-svg" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="11" fill="#0D111A" stroke="rgba(255, 255, 255, 0.16)" stroke-width="0.8" />
+                  <path d="M 14,3 A 11,11 0 0 1 14,25 Z" fill="#E2E8F0" />
+                </svg>
+              </div>
+              <span class="node-order">03</span>
+              <span class="node-label">Bachat Saathi</span>
+            </button>
+
+            <!-- Phase 4: Waxing Gibbous (Floodsafe) - 135° / ~4:30 -->
+            <button type="button" class="lunar-phase-node is-available" style="--phase-angle: 135;" data-phase-order="4"
+              data-project-id="floodsafe"
+              aria-label="Phase 4: Waxing Gibbous — Floodsafe (In Progress, Click to open workstation)">
+              <div class="node-glyph-wrap" aria-hidden="true">
+                <svg class="lunar-svg" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="11" fill="#0D111A" stroke="rgba(255, 255, 255, 0.16)" stroke-width="0.8" />
+                  <path d="M 14,3 A 11,11 0 0 1 14,25 A 7.8,11 0 0 1 14,3 Z" fill="#E2E8F0" />
+                </svg>
+              </div>
+              <span class="node-order">04</span>
+              <span class="node-label">Floodsafe</span>
+              <span class="node-status-tag">WIP</span>
+            </button>
+
+            <!-- Phase 5: Full Moon - 180° / 6:00 -->
+            <div class="lunar-phase-node is-locked" style="--phase-angle: 180;" data-phase-order="5"
+              aria-disabled="true" aria-label="Phase 5: Full Moon (Future phase)">
+              <div class="node-glyph-wrap" aria-hidden="true">
+                <svg class="lunar-svg" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="11" fill="#E2E8F0" />
+                  <path d="M 10,10 Q 12,8 15,10 Q 17,13 15,16 Q 11,15 10,10 Z" fill="#CBD5E1" opacity="0.45" />
+                  <ellipse cx="16" cy="17" rx="3" ry="2" fill="#CBD5E1" opacity="0.4" />
+                  <circle cx="11" cy="18" r="1.5" fill="#CBD5E1" opacity="0.35" />
+                </svg>
+              </div>
+              <span class="node-order">05</span>
+            </div>
+
+            <!-- Phase 6: Waning Gibbous - 225° / ~7:30 -->
+            <div class="lunar-phase-node is-locked" style="--phase-angle: 225;" data-phase-order="6"
+              aria-disabled="true" aria-label="Phase 6: Waning Gibbous (Future phase)">
+              <div class="node-glyph-wrap" aria-hidden="true">
+                <svg class="lunar-svg" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="11" fill="#0D111A" stroke="rgba(255, 255, 255, 0.16)" stroke-width="0.8" />
+                  <path d="M 14,3 A 11,11 0 0 0 14,25 A 7.8,11 0 0 0 14,3 Z" fill="#E2E8F0" />
+                </svg>
+              </div>
+              <span class="node-order">06</span>
+            </div>
+
+            <!-- Phase 7: Third Quarter - 270° / 9:00 -->
+            <div class="lunar-phase-node is-locked" style="--phase-angle: 270;" data-phase-order="7"
+              aria-disabled="true" aria-label="Phase 7: Third Quarter (Future phase)">
+              <div class="node-glyph-wrap" aria-hidden="true">
+                <svg class="lunar-svg" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="11" fill="#0D111A" stroke="rgba(255, 255, 255, 0.16)" stroke-width="0.8" />
+                  <path d="M 14,3 A 11,11 0 0 0 14,25 Z" fill="#E2E8F0" />
+                </svg>
+              </div>
+              <span class="node-order">07</span>
+            </div>
+
+            <!-- Phase 8: Waning Crescent - 315° / ~10:30 -->
+            <div class="lunar-phase-node is-locked" style="--phase-angle: 315;" data-phase-order="8"
+              aria-disabled="true" aria-label="Phase 8: Waning Crescent (Future phase)">
+              <div class="node-glyph-wrap" aria-hidden="true">
+                <svg class="lunar-svg" viewBox="0 0 28 28" fill="none">
+                  <circle cx="14" cy="14" r="11" fill="#0D111A" stroke="rgba(255, 255, 255, 0.16)" stroke-width="0.8" />
+                  <path d="M 14,3 A 11,11 0 0 0 14,25 A 7.8,11 0 0 1 14,3 Z" fill="#E2E8F0" />
+                </svg>
+              </div>
+              <span class="node-order">08</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Developer Workstation Monitor Modal / Popup (Opens on Available Phase Click) -->
+      <div id="project-modal" class="project-modal-backdrop" role="dialog" aria-modal="true"
+        aria-labelledby="modal-project-title" aria-hidden="true">
+        <div class="modal-dialog-container">
+          <div class="workstation-monitor">
+            <!-- Window Titlebar & Editor Tabs -->
+            <div class="workstation-titlebar">
+              <div class="titlebar-left">
+                <div class="window-controls" aria-hidden="true">
+                  <span class="control-dot close"></span>
+                  <span class="control-dot min"></span>
+                  <span class="control-dot max"></span>
+                </div>
+                <div class="editor-tabs-bar" role="tablist">
+                  <div class="editor-tab" role="tab" aria-selected="true">
+                    <span class="tab-icon" aria-hidden="true">📄</span>
+                    <span id="modal-tab-filename">project.md</span>
+                  </div>
+                </div>
+              </div>
+
+              <button type="button" class="workstation-close-btn" id="modal-close-btn"
+                aria-label="Close workstation modal">
+                <span>Close</span>
+                <kbd>ESC</kbd>
+              </button>
+            </div>
+
+            <!-- Workstation Screen: Sidebar & Editor Pane -->
+            <div class="workstation-screen">
+              <aside class="workstation-sidebar" aria-label="Project Explorer">
+                <span class="sidebar-title">EXPLORER</span>
+                <div class="sidebar-tree">
+                  <div class="tree-item">
+                    <span>▾ projects</span>
+                  </div>
+                  <div class="tree-item is-active-file" style="padding-left: 1rem;">
+                    <span>📄</span>
+                    <span id="modal-sidebar-filename">project.md</span>
+                  </div>
+                </div>
+
+                <div class="sidebar-phase-nav">
+                  <span class="sidebar-nav-label">PHASE STATUS</span>
+                  <span class="sidebar-phase-val" id="modal-sidebar-phase"
+                    style="font-family: var(--font-mono); font-size: 11px; color: var(--color-accent-bright);">Phase 01
+                    // New Moon</span>
+                </div>
+              </aside>
+
+              <main class="workstation-editor" id="modal-editor-content">
+                <!-- Dynamically populated by js/projects.js -->
+              </main>
+            </div>
+
+            <!-- Workstation Status Bar (VS Code style) -->
+            <footer class="workstation-statusbar">
+              <div class="statusbar-left">
+                <span>⑂ main</span>
+                <span id="modal-status-category">Category</span>
+                <span id="modal-status-stage">Status</span>
+              </div>
+              <div class="statusbar-right">
+                <span>UTF-8</span>
+                <span>Markdown</span>
+                <span class="status-verified">✔ VERIFIED SOURCE OF TRUTH</span>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Skills Container -->
+    <section id="skills" class="section" aria-label="Skills">
+      <div class="wrap">
+        <div class="section-header skills-header">
+          <span class="section-eyebrow">SKILLS INDEX</span>
+          <h2 class="section-title">Skills</h2>
+        </div>
+
+        <div id="skills-mount">
+          <div class="skills-index-wrapper">
+            <div class="skills-cards-grid" role="region" aria-label="Technical and Product Skills Index">
+              <!-- Card 01: Product & Strategy -->
+              <div class="skills-card" id="skill-card-product-strategy">
+                <div class="skills-card-header">
+                  <h3 class="skills-card-title">Product &amp; Strategy</h3>
+                </div>
+                <p class="skills-card-body">
+                  <span class="skill-name">Product Thinking</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">User Research</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Problem Framing</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Wireframing</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">User Flow Design</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">UX Thinking</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Feature Ideation</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Team Coordination</span>
+                </p>
+              </div>
+
+              <!-- Card 02: Programming -->
+              <div class="skills-card" id="skill-card-programming">
+                <div class="skills-card-header">
+                  <h3 class="skills-card-title">Programming</h3>
+                </div>
+                <p class="skills-card-body">
+                  <span class="skill-name">C</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">C++</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Python</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">SQL</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">HTML</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">CSS</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">JavaScript</span>
+                </p>
+              </div>
+
+              <!-- Card 03: Tools & Platforms -->
+              <div class="skills-card" id="skill-card-tools-platforms">
+                <div class="skills-card-header">
+                  <h3 class="skills-card-title">Tools &amp; Platforms</h3>
+                </div>
+                <p class="skills-card-body">
+                  <span class="skill-name">Git</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">GitHub</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">VS Code</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Google Antigravity</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Google Colab</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Jupyter Notebook</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Figma</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Canva</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Streamlit</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">FastAPI</span>
+                </p>
+              </div>
+
+              <!-- Card 04: Technologies & Concepts Explored (Full-Width) -->
+              <div class="skills-card skills-card-explored" id="skill-card-technologies-explored">
+                <div class="skills-card-header">
+                  <h3 class="skills-card-title">Technologies &amp; Concepts Explored</h3>
+                </div>
+                <p class="skills-card-body">
+                  <span class="skill-name">React</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Computer Vision</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Multimodal AI</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">QLoRA</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Model Fine-tuning</span><span class="skill-sep" aria-hidden="true"> · </span><span class="skill-name">Geospatial Technologies</span>
+                </p>
+                <p class="skills-exploration-caption">
+                  Project-based exposure, including AI-assisted implementation and experimentation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Hackathons Container -->
+    <section id="hackathons" class="section" aria-label="Hackathons">
+      <div class="wrap">
+        <div class="section-header">
+          <span class="section-eyebrow">Hackathons</span>
+          <h2 class="section-title">Hackathons</h2>
+          <p class="section-subtitle">
+            Compact mission-log entries of hackathon standings and leadership outcomes.
+          </p>
+        </div>
+        <div id="missions-mount">
+          <!-- Populated by js/hackathons.js from data/mission-logs.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 6: Contact -->
+    <section id="contact" class="section" aria-label="Contact">
+      <div class="wrap">
+        <div class="contact-layout">
+          <div class="section-header">
+            <span class="section-eyebrow">CONTACT CHANNEL · OPEN</span>
+            <h2 class="section-title contact-headline">Still exploring. Always building.</h2>
+            <p class="section-subtitle">
+              Open to technical product management internships, AI/ML initiatives, and student collaborations.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Photorealistic Lunar Hemisphere Stage with Planted Interactive Flags -->
+      <div class="contact-lunar-stage" role="region" aria-label="Lunar Contact Surface">
+        <div class="lunar-media-wrap">
+          <picture>
+            <source srcset="assets/images/lunar-hemisphere.webp" type="image/webp">
+            <img src="assets/images/lunar-hemisphere.jpg"
+              alt="Photorealistic lunar hemisphere emerging from the deep space void with four planted platform flags"
+              class="lunar-hemisphere-image" width="2000" height="700" decoding="async">
+          </picture>
+
+          <!-- Interactive Lunar Flags Overlay (Planted across the lunar surface) -->
+          <div class="lunar-flags-overlay" id="lunar-flags-mount" aria-label="Planted Platform Flags">
+            <!-- Flag 1: LinkedIn (Western Lunar Highlands - Verified Active) -->
+            <a href="https://linkedin.com/in/siyagour-299353360" class="lunar-flag is-active" style="left: 24%; top: 52%; --flag-tilt: -5deg;" data-platform="linkedin" aria-label="LinkedIn: Siya Gour">
+              <div class="lunar-flag-visual">
+                <svg class="lunar-flag-svg" viewBox="0 0 54 70" width="54" height="70" fill="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="flag-fabric-linkedin" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2D3342" />
+                      <stop offset="50%" stop-color="#212634" />
+                      <stop offset="100%" stop-color="#181C26" />
+                    </linearGradient>
+                  </defs>
+                  <ellipse cx="7" cy="66" rx="9.5" ry="2.6" fill="rgba(0,0,0,0.65)" />
+                  <line x1="7" y1="3" x2="7" y2="66" stroke="#D1D5DB" stroke-width="2.2" stroke-linecap="round" />
+                  <line x1="7" y1="4" x2="50" y2="4" stroke="#9CA3AF" stroke-width="1.6" stroke-linecap="round" />
+                  <circle cx="7" cy="3" r="2.4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="0.6" />
+                  <rect x="7" y="4" width="42" height="28" rx="2.5" fill="url(#flag-fabric-linkedin)" stroke="#94A3B8"
+                    stroke-width="1.2" class="flag-cloth" />
+                  <g class="flag-symbol flag-symbol-linkedin" transform="translate(19.5, 9.5)">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path
+                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.64a1.65 1.65 0 0 0-1.66 1.66 1.66 1.66 0 0 0 1.66 1.66 1.67 1.67 0 0 0 1.67-1.66c0-.92-.75-1.66-1.67-1.66Z" />
+                    </svg>
+                  </g>
+                </svg>
+              </div>
+            </a>
+
+            <!-- Flag 2: GitHub (Montes Apenninus crater rim - Verified Active) -->
+            <a href="https://github.com/Siyagour" class="lunar-flag is-active" style="left: 38%; top: 32%; --flag-tilt: -2deg;" data-platform="github" aria-label="GitHub: Siyagour">
+              <div class="lunar-flag-visual">
+                <svg class="lunar-flag-svg" viewBox="0 0 54 70" width="54" height="70" fill="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="flag-fabric-github" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2D3342" />
+                      <stop offset="50%" stop-color="#212634" />
+                      <stop offset="100%" stop-color="#181C26" />
+                    </linearGradient>
+                  </defs>
+                  <ellipse cx="7" cy="66" rx="9.5" ry="2.6" fill="rgba(0,0,0,0.65)" />
+                  <line x1="7" y1="3" x2="7" y2="66" stroke="#D1D5DB" stroke-width="2.2" stroke-linecap="round" />
+                  <line x1="7" y1="4" x2="50" y2="4" stroke="#9CA3AF" stroke-width="1.6" stroke-linecap="round" />
+                  <circle cx="7" cy="3" r="2.4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="0.6" />
+                  <rect x="7" y="4" width="42" height="28" rx="2.5" fill="url(#flag-fabric-github)" stroke="#94A3B8"
+                    stroke-width="1.2" class="flag-cloth" />
+                  <g class="flag-symbol" transform="translate(19.5, 9.5)">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="#FFFFFF" aria-hidden="true">
+                      <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z" />
+                    </svg>
+                  </g>
+                </svg>
+              </div>
+            </a>
+
+            <!-- Flag 3: Email (Mare Tranquillitatis - Verified Active) -->
+            <a href="mailto:siyagour23@gmail.com" class="lunar-flag is-active" style="left: 58%; top: 29%; --flag-tilt: 2deg;" data-platform="email" aria-label="Email Siya Gour: siyagour23@gmail.com">
+              <div class="lunar-flag-visual">
+                <svg class="lunar-flag-svg" viewBox="0 0 54 70" width="54" height="70" fill="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="flag-fabric-email" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2D3342" />
+                      <stop offset="50%" stop-color="#212634" />
+                      <stop offset="100%" stop-color="#181C26" />
+                    </linearGradient>
+                  </defs>
+                  <ellipse cx="7" cy="66" rx="9.5" ry="2.6" fill="rgba(0,0,0,0.65)" />
+                  <line x1="7" y1="3" x2="7" y2="66" stroke="#D1D5DB" stroke-width="2.2" stroke-linecap="round" />
+                  <line x1="7" y1="4" x2="50" y2="4" stroke="#9CA3AF" stroke-width="1.6" stroke-linecap="round" />
+                  <circle cx="7" cy="3" r="2.4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="0.6" />
+                  <rect x="7" y="4" width="42" height="28" rx="2.5" fill="url(#flag-fabric-email)" stroke="#94A3B8"
+                    stroke-width="1.2" class="flag-cloth" />
+                  <g class="flag-symbol" transform="translate(19.5, 9.5)">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                  </g>
+                </svg>
+              </div>
+            </a>
+
+            <!-- Flag 4: Resume (Eastern Lunar Highlands - Disabled until configured) -->
+            <div class="lunar-flag is-disabled" style="left: 76%; top: 50%; --flag-tilt: 5deg;" data-platform="resume" role="link" aria-disabled="true" aria-label="Resume">
+              <div class="lunar-flag-visual">
+                <svg class="lunar-flag-svg" viewBox="0 0 54 70" width="54" height="70" fill="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="flag-fabric-resume" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2D3342" />
+                      <stop offset="50%" stop-color="#212634" />
+                      <stop offset="100%" stop-color="#181C26" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Ground Planting Contact Shadow on Lunar Dust -->
+                  <ellipse cx="7" cy="66" rx="9.5" ry="2.6" fill="rgba(0,0,0,0.65)" />
+                  <line x1="7" y1="3" x2="7" y2="66" stroke="#D1D5DB" stroke-width="2.2" stroke-linecap="round" />
+                  <line x1="7" y1="4" x2="50" y2="4" stroke="#9CA3AF" stroke-width="1.6" stroke-linecap="round" />
+                  <circle cx="7" cy="3" r="2.4" fill="#F3F4F6" stroke="#9CA3AF" stroke-width="0.6" />
+                  <rect x="7" y="4" width="42" height="28" rx="2.5" fill="url(#flag-fabric-resume)" stroke="#94A3B8"
+                    stroke-width="1.2" class="flag-cloth" />
+                  <g class="flag-symbol" transform="translate(19.5, 9.5)">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Global Semantic Footer Landmark -->
+  <footer class="site-footer" id="site-footer"
+    style="padding: var(--space-8) 0; border-top: 1px solid var(--border-subtle); background-color: var(--color-bg);">
+    <div class="wrap"
+      style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+      <p style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted);">
+        © <span id="current-year">2026</span> Siya Gour
+      </p>
+      <a href="#home"
+        style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-accent-bright);"
+        aria-label="Back to top of page">
+        Back to Top ↑
+      </a>
+    </div>
+  </footer>
+
+  <!-- Vanilla ES Module Scripts -->
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/projects.js"></script>
+  <script type="module" src="js/skills.js"></script>
+  <script type="module" src="js/hackathons.js"></script>
+  <script type="module" src="js/contact.js"></script>
+</body>
+
+</html>
